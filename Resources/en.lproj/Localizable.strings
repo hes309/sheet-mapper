@@ -58,6 +58,10 @@
 "error.workbookCorrupt" = "The workbook structure is damaged";
 "error.relationshipsCorrupt" = "The workbook relationships are damaged";
 "error.fileProcessingFailed" = "File processing failed";
+"preview.source.title" = "Source workbook preview (drop a file here)";
+"preview.template.title" = "Output template preview (drop a file here)";
+"mapping.source.placeholder" = "Source field";
+"mapping.target.placeholder" = "Target cell";
 
 "基础数据表预览（可拖入文件）" = "Source workbook preview (drop a file here)";
 "输出模板预览（可拖入文件）" = "Output template preview (drop a file here)";

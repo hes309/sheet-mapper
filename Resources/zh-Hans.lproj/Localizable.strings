@@ -58,3 +58,7 @@
 "error.workbookCorrupt" = "工作簿结构损坏";
 "error.relationshipsCorrupt" = "工作簿关系损坏";
 "error.fileProcessingFailed" = "文件处理失败";
+"preview.source.title" = "基础数据表预览（可拖入文件）";
+"preview.template.title" = "输出模板预览（可拖入文件）";
+"mapping.source.placeholder" = "左侧字段";
+"mapping.target.placeholder" = "右侧单元格";

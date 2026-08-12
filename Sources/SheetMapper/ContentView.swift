@@ -9,10 +9,10 @@ struct ContentView: View {
             header
             setup
             HSplitView {
-                preview(title: "基础数据表预览（可拖入文件）", sheet: model.sourceSheet, source: true).frame(minWidth: 440)
+                preview(title: L10n.text("preview.source.title"), sheet: model.sourceSheet, source: true).frame(minWidth: 440)
                     .dropDestination(for: URL.self) { urls, _ in if let url = urls.first { model.loadDropped(url, asSource: true); return true }; return false }
                 mappingControls.frame(minWidth: 190, maxWidth: 220)
-                preview(title: "输出模板预览（可拖入文件）", sheet: model.templateSheet, source: false).frame(minWidth: 440)
+                preview(title: L10n.text("preview.template.title"), sheet: model.templateSheet, source: false).frame(minWidth: 440)
                     .dropDestination(for: URL.self) { urls, _ in if let url = urls.first { model.loadDropped(url, asSource: false); return true }; return false }
             }.padding(12)
             mappingList
@@ -80,9 +80,9 @@ struct ContentView: View {
     private var mappingControls: some View {
         VStack(spacing: 12) {
             Text("建立映射").font(.title3.bold())
-            Text(model.selectedSource.isEmpty ? "左侧字段" : model.selectedSource).frame(maxWidth: .infinity).padding(8).background(.gray.opacity(0.1))
+            Text(model.selectedSource.isEmpty ? L10n.text("mapping.source.placeholder") : model.selectedSource).frame(maxWidth: .infinity).padding(8).background(.gray.opacity(0.1))
             Image(systemName: "arrow.down")
-            Text(model.selectedTarget.isEmpty ? "右侧单元格" : model.selectedTarget).frame(maxWidth: .infinity).padding(8).background(.gray.opacity(0.1))
+            Text(model.selectedTarget.isEmpty ? L10n.text("mapping.target.placeholder") : model.selectedTarget).frame(maxWidth: .infinity).padding(8).background(.gray.opacity(0.1))
             Button("建立映射", action: model.addMapping).buttonStyle(.borderedProminent).disabled(model.selectedSource.isEmpty || model.selectedTarget.isEmpty)
             Divider()
             TextField("常用映射名称", text: $model.memoryName)
