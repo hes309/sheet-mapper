@@ -1,0 +1,21 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve packages
+        run: xcodebuild -resolvePackageDependencies -project SheetMapper.xcodeproj -scheme SheetMapper
+      - name: Build Debug
+        run: xcodebuild -project SheetMapper.xcodeproj -scheme SheetMapper -configuration Debug CODE_SIGNING_ALLOWED=NO build
+      - name: Build Release
+        run: xcodebuild -project SheetMapper.xcodeproj -scheme SheetMapper -configuration Release CODE_SIGNING_ALLOWED=NO build
+      - name: Build regression tests
+        run: xcodebuild -project SheetMapper.xcodeproj -target SheetMapperTests -configuration Debug CODE_SIGNING_ALLOWED=NO build
+      - name: Run regression tests
+        run: "$(xcodebuild -project SheetMapper.xcodeproj -target SheetMapperTests -configuration Debug -showBuildSettings | awk '/TARGET_BUILD_DIR/{dir=$3} /EXECUTABLE_PATH/{path=$3} END{print dir \"/\" path}')"
