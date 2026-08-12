@@ -25,7 +25,7 @@
 		TB08 /* WorkbookConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08 /* WorkbookConverter.swift */; };
 		TB09 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09 /* Localization.swift */; };
 		TBE2E /* EndToEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2E /* EndToEnd.swift */; };
-		TBZIP /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = PZIP /* ZIPFoundation */; };
+		TBZIP /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = TPZIP /* ZIPFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,7 +160,7 @@
 			);
 			name = SheetMapperTests;
 			packageProductDependencies = (
-				PZIP /* ZIPFoundation */,
+				TPZIP /* ZIPFoundation */,
 			);
 			productName = SheetMapperTests;
 			productReference = TPROD /* SheetMapperTests */;
@@ -391,6 +391,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		PZIP /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		TPZIP /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = PKG /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
