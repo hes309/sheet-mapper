@@ -1,94 +1,401 @@
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
-	classes = {};
+	classes = {
+	};
 	objectVersion = 56;
 	objects = {
+
 /* Begin PBXBuildFile section */
-		B01 = {isa = PBXBuildFile; fileRef = F01; };
-		B02 = {isa = PBXBuildFile; fileRef = F02; };
-		B03 = {isa = PBXBuildFile; fileRef = F03; };
-		B04 = {isa = PBXBuildFile; fileRef = F04; };
-		B05 = {isa = PBXBuildFile; fileRef = F05; };
-		B06 = {isa = PBXBuildFile; fileRef = F06; };
-		B07 = {isa = PBXBuildFile; fileRef = F07; };
-		B08 = {isa = PBXBuildFile; fileRef = F08; };
-		B09 = {isa = PBXBuildFile; fileRef = F09; };
-		BR1 = {isa = PBXBuildFile; fileRef = LOCALIZABLE; };
-		BZIP = {isa = PBXBuildFile; productRef = PZIP; };
-		TB04 = {isa = PBXBuildFile; fileRef = F04; };
-		TB05 = {isa = PBXBuildFile; fileRef = F05; };
-		TB06 = {isa = PBXBuildFile; fileRef = F06; };
-		TB07 = {isa = PBXBuildFile; fileRef = F07; };
-		TB08 = {isa = PBXBuildFile; fileRef = F08; };
-		TB09 = {isa = PBXBuildFile; fileRef = F09; };
-		TBE2E = {isa = PBXBuildFile; fileRef = FE2E; };
-		TBZIP = {isa = PBXBuildFile; productRef = PZIP; };
+		B01 /* SheetMapperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01 /* SheetMapperApp.swift */; };
+		B02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02 /* ContentView.swift */; };
+		B03 /* MapperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03 /* MapperViewModel.swift */; };
+		B04 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04 /* Models.swift */; };
+		B05 /* ProcessRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05 /* ProcessRunner.swift */; };
+		B06 /* XLSXReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06 /* XLSXReader.swift */; };
+		B07 /* XLSXGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07 /* XLSXGenerator.swift */; };
+		B08 /* WorkbookConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08 /* WorkbookConverter.swift */; };
+		B09 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09 /* Localization.swift */; };
+		BR1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = LOCALIZABLE /* Localizable.strings */; };
+		BZIP /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = PZIP /* ZIPFoundation */; };
+		TB04 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04 /* Models.swift */; };
+		TB05 /* ProcessRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05 /* ProcessRunner.swift */; };
+		TB06 /* XLSXReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06 /* XLSXReader.swift */; };
+		TB07 /* XLSXGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07 /* XLSXGenerator.swift */; };
+		TB08 /* WorkbookConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08 /* WorkbookConverter.swift */; };
+		TB09 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09 /* Localization.swift */; };
+		TBE2E /* EndToEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2E /* EndToEnd.swift */; };
+		TBZIP /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = PZIP /* ZIPFoundation */; };
 /* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		F01 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetMapperApp.swift; sourceTree = "<group>"; };
-		F02 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F03 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperViewModel.swift; sourceTree = "<group>"; };
-		F04 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		F05 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessRunner.swift; sourceTree = "<group>"; };
-		F06 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXReader.swift; sourceTree = "<group>"; };
-		F07 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXGenerator.swift; sourceTree = "<group>"; };
-		F08 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookConverter.swift; sourceTree = "<group>"; };
-		F09 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		FE2E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndToEnd.swift; sourceTree = "<group>"; };
-		LEN = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		LZH = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		PROD = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SheetMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		TPROD = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SheetMapperTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		F01 /* SheetMapperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetMapperApp.swift; sourceTree = "<group>"; };
+		F02 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F03 /* MapperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperViewModel.swift; sourceTree = "<group>"; };
+		F04 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F05 /* ProcessRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessRunner.swift; sourceTree = "<group>"; };
+		F06 /* XLSXReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXReader.swift; sourceTree = "<group>"; };
+		F07 /* XLSXGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLSXGenerator.swift; sourceTree = "<group>"; };
+		F08 /* WorkbookConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbookConverter.swift; sourceTree = "<group>"; };
+		F09 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		FE2E /* EndToEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndToEnd.swift; sourceTree = "<group>"; };
+		LEN /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		LZH /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		PROD /* SheetMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SheetMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		TPROD /* SheetMapperTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SheetMapperTests; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-/* Begin PBXVariantGroup section */
-		LOCALIZABLE = {isa = PBXVariantGroup; children = (LEN, LZH); name = Localizable.strings; sourceTree = "<group>"; };
-/* End PBXVariantGroup section */
-/* Begin PBXGroup section */
-		ROOT = {isa = PBXGroup; children = (SRCROOT, RESROOT, TESTROOT, PRODUCTS); sourceTree = "<group>"; };
-		SRCROOT = {isa = PBXGroup; path = Sources; sourceTree = "<group>"; children = (SRC); };
-		SRC = {isa = PBXGroup; path = SheetMapper; sourceTree = "<group>"; children = (F01, F02, F03, F04, F05, F06, F07, F08, F09); };
-		RESROOT = {isa = PBXGroup; path = Resources; sourceTree = "<group>"; children = (LOCALIZABLE); };
-		TESTROOT = {isa = PBXGroup; path = Tests/SheetMapperTests; sourceTree = "<group>"; children = (FE2E); };
-		PRODUCTS = {isa = PBXGroup; name = Products; sourceTree = "<group>"; children = (PROD, TPROD); };
-/* End PBXGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		FRAMEWORKS = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (BZIP); runOnlyForDeploymentPostprocessing = 0; };
-		TFRAMEWORKS = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (TBZIP); runOnlyForDeploymentPostprocessing = 0; };
+		FRAMEWORKS /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BZIP /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		TFRAMEWORKS /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				TBZIP /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		PRODUCTS /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				PROD /* SheetMapper.app */,
+				TPROD /* SheetMapperTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		RESROOT /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				LOCALIZABLE /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ROOT = {
+			isa = PBXGroup;
+			children = (
+				SRCROOT /* Sources */,
+				RESROOT /* Resources */,
+				TESTROOT /* Tests/SheetMapperTests */,
+				PRODUCTS /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		SRC /* SheetMapper */ = {
+			isa = PBXGroup;
+			children = (
+				F01 /* SheetMapperApp.swift */,
+				F02 /* ContentView.swift */,
+				F03 /* MapperViewModel.swift */,
+				F04 /* Models.swift */,
+				F05 /* ProcessRunner.swift */,
+				F06 /* XLSXReader.swift */,
+				F07 /* XLSXGenerator.swift */,
+				F08 /* WorkbookConverter.swift */,
+				F09 /* Localization.swift */,
+			);
+			path = SheetMapper;
+			sourceTree = "<group>";
+		};
+		SRCROOT /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				SRC /* SheetMapper */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		TESTROOT /* Tests/SheetMapperTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE2E /* EndToEnd.swift */,
+			);
+			path = Tests/SheetMapperTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
 /* Begin PBXNativeTarget section */
-		TARGET = {isa = PBXNativeTarget; buildConfigurationList = TARGETCONFIGS; buildPhases = (SOURCES, FRAMEWORKS, RESOURCES); buildRules = (); dependencies = (); name = SheetMapper; packageProductDependencies = (PZIP); productName = SheetMapper; productReference = PROD; productType = "com.apple.product-type.application"; };
-		TTEST = {isa = PBXNativeTarget; buildConfigurationList = TESTCONFIGS; buildPhases = (TSOURCES, TFRAMEWORKS); buildRules = (); dependencies = (); name = SheetMapperTests; packageProductDependencies = (PZIP); productName = SheetMapperTests; productReference = TPROD; productType = "com.apple.product-type.tool"; };
+		TARGET /* SheetMapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = TARGETCONFIGS /* Build configuration list for PBXNativeTarget "SheetMapper" */;
+			buildPhases = (
+				SOURCES /* Sources */,
+				FRAMEWORKS /* Frameworks */,
+				RESOURCES /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SheetMapper;
+			packageProductDependencies = (
+				PZIP /* ZIPFoundation */,
+			);
+			productName = SheetMapper;
+			productReference = PROD /* SheetMapper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		TTEST /* SheetMapperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = TESTCONFIGS /* Build configuration list for PBXNativeTarget "SheetMapperTests" */;
+			buildPhases = (
+				TSOURCES /* Sources */,
+				TFRAMEWORKS /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SheetMapperTests;
+			packageProductDependencies = (
+				PZIP /* ZIPFoundation */,
+			);
+			productName = SheetMapperTests;
+			productReference = TPROD /* SheetMapperTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
-		PROJECT = {isa = PBXProject; attributes = {LastSwiftUpdateCheck = 2600; LastUpgradeCheck = 2600; }; buildConfigurationList = PROJECTCONFIGS; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, "zh-Hans", Base); mainGroup = ROOT; packageReferences = (PKG); productRefGroup = PRODUCTS; projectDirPath = ""; projectRoot = ""; targets = (TARGET, TTEST); };
+		PROJECT /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+			};
+			buildConfigurationList = PROJECTCONFIGS /* Build configuration list for PBXProject "SheetMapper" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				Base,
+			);
+			mainGroup = ROOT;
+			packageReferences = (
+				PKG /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
+			productRefGroup = PRODUCTS /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TARGET /* SheetMapper */,
+				TTEST /* SheetMapperTests */,
+			);
+		};
 /* End PBXProject section */
+
 /* Begin PBXResourcesBuildPhase section */
-		RESOURCES = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (BR1); runOnlyForDeploymentPostprocessing = 0; };
+		RESOURCES /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BR1 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		SOURCES = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B01, B02, B03, B04, B05, B06, B07, B08, B09); runOnlyForDeploymentPostprocessing = 0; };
-		TSOURCES = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (TB04, TB05, TB06, TB07, TB08, TB09, TBE2E); runOnlyForDeploymentPostprocessing = 0; };
+		SOURCES /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B01 /* SheetMapperApp.swift in Sources */,
+				B02 /* ContentView.swift in Sources */,
+				B03 /* MapperViewModel.swift in Sources */,
+				B04 /* Models.swift in Sources */,
+				B05 /* ProcessRunner.swift in Sources */,
+				B06 /* XLSXReader.swift in Sources */,
+				B07 /* XLSXGenerator.swift in Sources */,
+				B08 /* WorkbookConverter.swift in Sources */,
+				B09 /* Localization.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		TSOURCES /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				TB04 /* Models.swift in Sources */,
+				TB05 /* ProcessRunner.swift in Sources */,
+				TB06 /* XLSXReader.swift in Sources */,
+				TB07 /* XLSXGenerator.swift in Sources */,
+				TB08 /* WorkbookConverter.swift in Sources */,
+				TB09 /* Localization.swift in Sources */,
+				TBE2E /* EndToEnd.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		LOCALIZABLE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				LEN /* en */,
+				LZH /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		PDEBUG = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; MACOSX_DEPLOYMENT_TARGET = 13.0; SDKROOT = macosx; }; name = Debug; };
-		PRELEASE = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; MACOSX_DEPLOYMENT_TARGET = 13.0; SDKROOT = macosx; }; name = Release; };
-		TDEBUG = {isa = XCBuildConfiguration; buildSettings = {ARCHS = "arm64 x86_64"; CODE_SIGN_IDENTITY = "-"; CODE_SIGN_STYLE = Manual; COMBINE_HIDPI_IMAGES = YES; CURRENT_PROJECT_VERSION = 1; ENABLE_HARDENED_RUNTIME = YES; ENABLE_USER_SELECTED_FILES = readwrite; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = SheetMapper; INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity"; MACOSX_DEPLOYMENT_TARGET = 13.0; MARKETING_VERSION = 2.0.0; PRODUCT_BUNDLE_IDENTIFIER = com.sheetmapper.app; PRODUCT_NAME = SheetMapper; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; }; name = Debug; };
-		TRELEASE = {isa = XCBuildConfiguration; buildSettings = {ARCHS = "arm64 x86_64"; CODE_SIGN_IDENTITY = "-"; CODE_SIGN_STYLE = Manual; COMBINE_HIDPI_IMAGES = YES; CURRENT_PROJECT_VERSION = 1; ENABLE_HARDENED_RUNTIME = YES; ENABLE_USER_SELECTED_FILES = readwrite; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = SheetMapper; INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity"; MACOSX_DEPLOYMENT_TARGET = 13.0; MARKETING_VERSION = 2.0.0; PRODUCT_BUNDLE_IDENTIFIER = com.sheetmapper.app; PRODUCT_NAME = SheetMapper; SWIFT_OPTIMIZATION_LEVEL = "-O"; SWIFT_VERSION = 5.0; }; name = Release; };
-		TTDEBUG = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGNING_ALLOWED = NO; MACOSX_DEPLOYMENT_TARGET = 13.0; PRODUCT_NAME = SheetMapperTests; SWIFT_VERSION = 5.0; }; name = Debug; };
-		TTRELEASE = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGNING_ALLOWED = NO; MACOSX_DEPLOYMENT_TARGET = 13.0; PRODUCT_NAME = SheetMapperTests; SWIFT_OPTIMIZATION_LEVEL = "-O"; SWIFT_VERSION = 5.0; }; name = Release; };
+		PDEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		PRELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		TDEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+					x86_64,
+				);
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = Q6T4HFK4DR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SheetMapper;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sheetmapper.app;
+				PRODUCT_NAME = SheetMapper;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		TRELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					arm64,
+					x86_64,
+				);
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = Q6T4HFK4DR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SheetMapper;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sheetmapper.app;
+				PRODUCT_NAME = SheetMapper;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		TTDEBUG /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = SheetMapperTests;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		TTRELEASE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = SheetMapperTests;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
+
 /* Begin XCConfigurationList section */
-		PROJECTCONFIGS = {isa = XCConfigurationList; buildConfigurations = (PDEBUG, PRELEASE); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
-		TARGETCONFIGS = {isa = XCConfigurationList; buildConfigurations = (TDEBUG, TRELEASE); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
-		TESTCONFIGS = {isa = XCConfigurationList; buildConfigurations = (TTDEBUG, TTRELEASE); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		PROJECTCONFIGS /* Build configuration list for PBXProject "SheetMapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				PDEBUG /* Debug */,
+				PRELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		TARGETCONFIGS /* Build configuration list for PBXNativeTarget "SheetMapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TDEBUG /* Debug */,
+				TRELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		TESTCONFIGS /* Build configuration list for PBXNativeTarget "SheetMapperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TTDEBUG /* Debug */,
+				TTRELEASE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
 /* Begin XCRemoteSwiftPackageReference section */
-		PKG = {isa = XCRemoteSwiftPackageReference; repositoryURL = "https://github.com/weichsel/ZIPFoundation.git"; requirement = {kind = upToNextMinorVersion; minimumVersion = 0.9.20; }; };
+		PKG /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.9.20;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		PZIP = {isa = XCSwiftPackageProductDependency; package = PKG; productName = ZIPFoundation; };
+		PZIP /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = PROJECT;
+	rootObject = PROJECT /* Project object */;
 }
