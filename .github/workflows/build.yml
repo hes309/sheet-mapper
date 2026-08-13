@@ -19,3 +19,44 @@ jobs:
         run: xcodebuild -project SheetMapper.xcodeproj -scheme SheetMapperTests -configuration Debug CODE_SIGNING_ALLOWED=NO build
       - name: Run regression tests
         run: "$(xcodebuild -project SheetMapper.xcodeproj -scheme SheetMapperTests -configuration Debug -showBuildSettings | awk '/TARGET_BUILD_DIR/{dir=$3} /EXECUTABLE_PATH/{path=$3} END{print dir \"/\" path}')"
+
+  windows:
+    runs-on: windows-2022
+    defaults:
+      run:
+        working-directory: Windows/SheetMapper-Windows
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Build Windows Release
+        run: dotnet build SheetMapper.Windows.csproj -c Release
+      - name: Run XLSX generation regression tests
+        run: dotnet run --project Tests/SheetMapper.CoreTests.csproj -c Release
+      - name: Publish self-contained portable app
+        run: dotnet publish SheetMapper.Windows.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None -p:DebugSymbols=false -o publish/win-x64
+      - name: Verify portable EXE starts and creates a main window
+        shell: powershell
+        run: |
+          $exe = Resolve-Path "publish/win-x64/SheetMapper.exe"
+          $process = Start-Process -FilePath $exe -PassThru
+          try {
+            $deadline = (Get-Date).AddSeconds(20)
+            do {
+              Start-Sleep -Milliseconds 500
+              $process.Refresh()
+              if ($process.HasExited) { throw "SheetMapper exited unexpectedly with code $($process.ExitCode)" }
+            } while ($process.MainWindowHandle -eq 0 -and (Get-Date) -lt $deadline)
+            if ($process.MainWindowHandle -eq 0) { throw "SheetMapper did not create a visible main window within 20 seconds" }
+            Write-Host "PASS: SheetMapper started on Windows and created main window $($process.MainWindowHandle)."
+          } finally {
+            if (!$process.HasExited) { Stop-Process -Id $process.Id -Force }
+          }
+      - name: Package portable Windows build
+        shell: powershell
+        run: Compress-Archive -Path publish/win-x64/* -DestinationPath publish/SheetMapper-Windows10-x64-Portable.zip -Force
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SheetMapper-Windows10-x64-Portable
+          path: Windows/SheetMapper-Windows/publish/SheetMapper-Windows10-x64-Portable.zip
