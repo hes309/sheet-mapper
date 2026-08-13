@@ -1,6 +1,8 @@
 import Foundation
 
 enum XLSXGenerator {
+    static let bundledConfigurationFilename = "SheetMapper映射配置.json"
+
     struct Record { let values: [String]; let sourceRow: Int; let key: String }
 
     static func generate(source: WorkbookPreview, sourceSheet: SheetPreview, template: WorkbookPreview, templateSheet: SheetPreview,
@@ -75,8 +77,18 @@ enum XLSXGenerator {
         try checkCancellation()
         progress?(.writing, 0, 1)
         try writeCSV([["来源行", "主键", "异常原因"]] + errorRows, to: workspace.appendingPathComponent("数据校验异常.csv"))
-        let configData = try JSONEncoder.pretty.encode(mappings)
-        try configData.write(to: workspace.appendingPathComponent("映射配置.json"))
+        // Bundle the exact configuration snapshot used for this generation so the
+        // output can be reproduced later, even after the UI settings have changed.
+        let configuration = MappingConfiguration(
+            headerRow: headerRow,
+            dataStartRow: dataStartRow,
+            keyField: keyField,
+            sheetsPerWorkbook: sheetsPerWorkbook,
+            outputMode: outputMode,
+            mappings: mappings
+        )
+        let configData = try JSONEncoder.pretty.encode(configuration)
+        try configData.write(to: workspace.appendingPathComponent(bundledConfigurationFilename), options: .atomic)
         let stagedArchive = FileManager.default.temporaryDirectory.appendingPathComponent("mapping-result-\(UUID().uuidString).zip")
         defer { try? FileManager.default.removeItem(at: stagedArchive) }
         try ProcessRunner.zipContents(of: workspace, to: stagedArchive)

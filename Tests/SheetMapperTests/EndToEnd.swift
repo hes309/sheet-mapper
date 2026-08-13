@@ -25,6 +25,23 @@ struct EndToEnd {
             headerRow: 1, dataStartRow: 2, mappings: mappings, keyField: "Account", sheetsPerWorkbook: 20, destination: output)
         guard summary.total == 29, summary.success == 29, summary.batches == 2 else { throw MapperError.message("Batch generation failed") }
 
+        let unpackedResult = try ProcessRunner.temporaryDirectory(prefix: "sheetmapper-result")
+        defer { try? FileManager.default.removeItem(at: unpackedResult) }
+        try ProcessRunner.unzip(output, to: unpackedResult)
+        let bundledConfigURL = unpackedResult.appendingPathComponent(XLSXGenerator.bundledConfigurationFilename)
+        guard FileManager.default.fileExists(atPath: bundledConfigURL.path) else {
+            throw MapperError.message("Generated ZIP is missing \(XLSXGenerator.bundledConfigurationFilename)")
+        }
+        let bundledConfig = try JSONDecoder().decode(MappingConfiguration.self, from: Data(contentsOf: bundledConfigURL))
+        guard bundledConfig.headerRow == 1,
+              bundledConfig.dataStartRow == 2,
+              bundledConfig.keyField == "Account",
+              bundledConfig.sheetsPerWorkbook == 20,
+              bundledConfig.outputMode == .combined,
+              bundledConfig.mappings == mappings else {
+            throw MapperError.message("Bundled mapping configuration does not match generation settings")
+        }
+
         let legacy = #"{"headerRow":1,"dataStartRow":2,"keyField":"Account","sheetsPerWorkbook":20,"outputMode":"一个工作簿包含多个Sheet","mappings":[]}"#.data(using: .utf8)!
         let migrated = try JSONDecoder().decode(MappingConfiguration.self, from: legacy)
         guard migrated.configurationVersion == 1, migrated.applicationVersion == "1.x" else { throw MapperError.message("Legacy configuration migration failed") }
@@ -33,7 +50,7 @@ struct EndToEnd {
         guard roundTrip.configurationVersion == 2, roundTrip.applicationVersion == "2.0.0" else { throw MapperError.message("Configuration version round-trip failed") }
 
         guard previewDisplayValue("A2", address: "A2").isEmpty else { throw MapperError.message("Blank coordinate placeholder rule failed") }
-        print("SheetMapper end-to-end tests passed: 29 records, 2 batches, versioned configuration migration.")
+        print("SheetMapper end-to-end tests passed: 29 records, 2 batches, bundled configuration, versioned migration.")
     }
 
     private static func sourceWorksheet() -> String {
