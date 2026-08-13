@@ -23,11 +23,11 @@ struct ContentView: View {
     private var header: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("app.title").font(.title2.bold())
-                Text("app.subtitle").foregroundStyle(.secondary)
+                Text(L10n.text("app.title")).font(.title2.bold())
+                Text(L10n.text("app.subtitle")).foregroundStyle(.secondary)
             }
             Spacer()
-            Picker("language.label", selection: $language) {
+            Picker(L10n.text("language.label"), selection: $language) {
                 ForEach(AppLanguage.allCases) { Text($0.displayName).tag($0.rawValue) }
             }
             .labelsHidden().frame(width: 130)
@@ -39,14 +39,14 @@ struct ContentView: View {
 
     private var setup: some View {
         HStack {
-            Button("选择基础数据表", action: model.chooseSource).buttonStyle(.borderedProminent)
-            Picker("工作表", selection: $model.sourceSheetName) { ForEach(model.sourceIndex?.sheets ?? []) { Text($0.name).tag($0.name) } }
+            Button(L10n.text("ui.chooseSource"), action: model.chooseSource).buttonStyle(.borderedProminent)
+            Picker(L10n.text("ui.worksheet"), selection: $model.sourceSheetName) { ForEach(model.sourceIndex?.sheets ?? []) { Text($0.name).tag($0.name) } }
                 .frame(width: 240).onChange(of: model.sourceSheetName) { model.selectSourceSheet(named: $0) }
-            Stepper("表头行 \(model.headerRow)", value: $model.headerRow, in: 1...50).onChange(of: model.headerRow) { _ in model.refreshHeaders() }
-            Stepper("数据起始行 \(model.dataStartRow)", value: $model.dataStartRow, in: 2...10000)
+            Stepper(L10n.format("ui.headerRow", model.headerRow), value: $model.headerRow, in: 1...50).onChange(of: model.headerRow) { _ in model.refreshHeaders() }
+            Stepper(L10n.format("ui.dataStartRow", model.dataStartRow), value: $model.dataStartRow, in: 2...10000)
             Divider().frame(height: 28)
-            Button("选择输出模板", action: model.chooseTemplate).buttonStyle(.borderedProminent).tint(.teal)
-            Picker("模板工作表", selection: $model.templateSheetName) { ForEach(model.template?.sheets ?? []) { Text($0.name).tag($0.name) } }.frame(width: 220)
+            Button(L10n.text("ui.chooseTemplate"), action: model.chooseTemplate).buttonStyle(.borderedProminent).tint(.teal)
+            Picker(L10n.text("ui.templateWorksheet"), selection: $model.templateSheetName) { ForEach(model.template?.sheets ?? []) { Text($0.name).tag($0.name) } }.frame(width: 220)
         }.padding(10).background(Color(nsColor: .controlBackgroundColor))
     }
 
@@ -66,9 +66,9 @@ struct ContentView: View {
                     else { model.selectedTarget = address }
                 }
                 .overlay(alignment: .topTrailing) {
-                    if source && model.isLoadingSourceSheet { HStack { ProgressView(); Text("sheet.loading") }.padding(8).background(.regularMaterial).clipShape(RoundedRectangle(cornerRadius: 8)).padding(8) }
+                    if source && model.isLoadingSourceSheet { HStack { ProgressView(); Text(L10n.text("sheet.loading")) }.padding(8).background(.regularMaterial).clipShape(RoundedRectangle(cornerRadius: 8)).padding(8) }
                 }
-            } else { Spacer(); Text("file.chooseFirst").foregroundStyle(.secondary).frame(maxWidth: .infinity); Spacer() }
+            } else { Spacer(); Text(L10n.text("file.chooseFirst")).foregroundStyle(.secondary).frame(maxWidth: .infinity); Spacer() }
         }.padding(10).background(Color(nsColor: .windowBackgroundColor)).clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
@@ -79,30 +79,30 @@ struct ContentView: View {
 
     private var mappingControls: some View {
         VStack(spacing: 12) {
-            Text("建立映射").font(.title3.bold())
+            Text(L10n.text("ui.addMapping")).font(.title3.bold())
             Text(model.selectedSource.isEmpty ? L10n.text("mapping.source.placeholder") : model.selectedSource).frame(maxWidth: .infinity).padding(8).background(.gray.opacity(0.1))
             Image(systemName: "arrow.down")
             Text(model.selectedTarget.isEmpty ? L10n.text("mapping.target.placeholder") : model.selectedTarget).frame(maxWidth: .infinity).padding(8).background(.gray.opacity(0.1))
-            Button("建立映射", action: model.addMapping).buttonStyle(.borderedProminent).disabled(model.selectedSource.isEmpty || model.selectedTarget.isEmpty)
+            Button(L10n.text("ui.addMapping"), action: model.addMapping).buttonStyle(.borderedProminent).disabled(model.selectedSource.isEmpty || model.selectedTarget.isEmpty)
             Divider()
-            TextField("常用映射名称", text: $model.memoryName)
-            Button("记住当前映射", action: model.saveMemory)
+            TextField(L10n.text("ui.presetName"), text: $model.memoryName)
+            Button(L10n.text("ui.savePreset"), action: model.saveMemory)
             ForEach(model.memories) { memory in HStack { Button(memory.name) { model.applyMemory(memory) }; Button(role: .destructive) { model.deleteMemory(memory) } label: { Image(systemName: "trash") } } }
             Spacer()
-            Text("已建立 \(model.mappings.count) 项").foregroundStyle(.secondary)
+            Text(L10n.format("ui.mappingCount", model.mappings.count)).foregroundStyle(.secondary)
         }.padding(12)
     }
 
     private var mappingList: some View {
         VStack(alignment: .leading) {
-            Text("已确定的映射关系").font(.headline)
-            HStack { Button("导出配置", action: model.exportConfiguration); Button("导入配置", action: model.importConfiguration); Spacer() }
+            Text(L10n.text("ui.mappings")).font(.headline)
+            HStack { Button(L10n.text("ui.exportConfig"), action: model.exportConfiguration); Button(L10n.text("ui.importConfig"), action: model.importConfiguration); Spacer() }
             Table($model.mappings) {
-                TableColumn("基础字段") { $item in Text(item.source) }
-                TableColumn("模板单元格") { $item in Text(item.target) }
-                TableColumn("数据处理") { $item in Picker("", selection: $item.transform) { ForEach(ValueTransform.allCases) { Text($0.localizedName).tag($0) } }.labelsHidden() }
-                TableColumn("必填") { $item in Toggle("", isOn: $item.required).labelsHidden() }
-                TableColumn("操作") { $item in Button("删除", role: .destructive) { model.mappings.removeAll { $0.id == item.id } } }
+                TableColumn(L10n.text("ui.sourceField")) { $item in Text(item.source) }
+                TableColumn(L10n.text("ui.templateCell")) { $item in Text(item.target) }
+                TableColumn(L10n.text("ui.transform")) { $item in Picker("", selection: $item.transform) { ForEach(ValueTransform.allCases) { Text($0.localizedName).tag($0) } }.labelsHidden() }
+                TableColumn(L10n.text("ui.required")) { $item in Toggle("", isOn: $item.required).labelsHidden() }
+                TableColumn(L10n.text("ui.actions")) { $item in Button(L10n.text("ui.delete"), role: .destructive) { model.mappings.removeAll { $0.id == item.id } } }
             }.frame(height: 150)
         }.padding(.horizontal, 12)
     }
@@ -117,11 +117,11 @@ struct ContentView: View {
                 }
             }
             Spacer()
-            Picker("主键", selection: $model.keyField) { ForEach(model.headers.filter { !$0.isEmpty }, id: \.self) { Text($0).tag($0) } }.frame(width: 220)
-            Picker("输出方式", selection: $model.outputMode) { ForEach(OutputMode.allCases) { Text($0.localizedName).tag($0) } }.frame(width: 240)
-            Stepper("每个工作簿 \(model.sheetsPerWorkbook) 个Sheet", value: $model.sheetsPerWorkbook, in: 1...200)
-            Button("按映射关系批量生成", action: model.generate).buttonStyle(.borderedProminent).disabled(model.isBusy || model.mappings.isEmpty)
-            if model.generationStage != .idle { Button("取消", role: .cancel, action: model.cancelGeneration) }
+            Picker(L10n.text("ui.keyField"), selection: $model.keyField) { ForEach(model.headers.filter { !$0.isEmpty }, id: \.self) { Text($0).tag($0) } }.frame(width: 220)
+            Picker(L10n.text("ui.outputMode"), selection: $model.outputMode) { ForEach(OutputMode.allCases) { Text($0.localizedName).tag($0) } }.frame(width: 240)
+            Stepper(L10n.format("ui.sheetsPerWorkbook", model.sheetsPerWorkbook), value: $model.sheetsPerWorkbook, in: 1...200)
+            Button(L10n.text("ui.generate"), action: model.generate).buttonStyle(.borderedProminent).disabled(model.isBusy || model.mappings.isEmpty)
+            if model.generationStage != .idle { Button(L10n.text("ui.cancel"), role: .cancel, action: model.cancelGeneration) }
         }.padding(12)
     }
 }
